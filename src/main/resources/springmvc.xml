@@ -23,6 +23,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 配置异常处理器 -->
+    <bean id="sysExceptionResolver" class="com.coolGuy.exception.SelfExceptionResolver"/>
+
     <!--静态资源请求映射-->
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
     <mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
