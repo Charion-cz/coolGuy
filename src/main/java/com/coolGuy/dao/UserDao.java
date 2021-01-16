@@ -1,9 +1,6 @@
 package com.coolGuy.dao;
 
 import com.coolGuy.pojo.User;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @Author Zhuang
@@ -11,7 +8,7 @@ import java.util.List;
  */
 public interface UserDao {
 
-    List<User> findAll();
+    int saveUser(User user);
 
-    void saveUser(User user);
+    User findByNameAndPwd(String username,String password);
 }

@@ -6,8 +6,6 @@ import com.coolGuy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author Zhuang
@@ -20,12 +18,16 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public void saveUser(User user) {
+        userDao.saveUser(user);
     }
 
     @Override
-    public void saveUser(User user) {
-        userDao.saveUser(user);
+    public String findByNameAndPwd(String username,String password) {
+        if(userDao.findByNameAndPwd(username,password) != null){
+            return "success";
+        }else {
+            return "login";
+        }
     }
 }

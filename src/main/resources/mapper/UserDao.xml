@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.coolGuy.dao.UserDao">
-    <select id="findAll" resultType="user">
-        select * from user
-    </select>
 
     <insert id="saveUser" parameterType="user">
-        insert into user values (null,#{name},#{age},#{email})
+        insert into tb_user values (null,#{username},#{phone},#{password})
     </insert>
+    
+    <select id="findByNameAndPwd" resultType="user" >
+        select * from tb_user where username=#{param1} and password=#{param2}
+    </select>
 </mapper>

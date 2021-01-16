@@ -2,7 +2,6 @@ package com.coolGuy.service;
 
 import com.coolGuy.pojo.User;
 
-import java.util.List;
 
 /**
  * @Author Zhuang
@@ -10,7 +9,9 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<User> findAll();
-
+    //新建用户
     void saveUser(User user);
+
+    //登录
+    String findByNameAndPwd(String username,String password);
 }

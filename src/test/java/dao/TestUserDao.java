@@ -25,23 +25,4 @@ import java.util.List;
 @ContextConfiguration(locations= {"classpath:applicationContext.xml"})
 public class TestUserDao {
 
-    @Autowired
-    private UserService userService;
-
-    @Test
-    public void testFindAll()  {
-        List<User> list = userService.findAll();
-        for (User user:list){
-            System.out.println(user);
-        }
-    }
-
-    @Test
-    public void testSaveUser() {
-        User user = new User();
-        user.setName("Acher");
-        user.setAge(26);
-        user.setEmail("test7@baomidou.com");
-        userService.saveUser(user);
-    }
 }
