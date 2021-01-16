@@ -32,4 +32,16 @@
     <mvc:resources location="/WEB-INF/img/" mapping="/images/**" />
     <mvc:resources location="/WEB-INF/data/" mapping="/data/**" />
     <mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**" />
+
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--  要拦截的具体方法 -->
+            <mvc:mapping path="/**"/>
+            <!-- 不要拦截的方法 -->
+            <mvc:exclude-mapping path="/limit/*"/>
+            <!-- 配置拦截器对象 -->
+            <bean class="com.coolGuy.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

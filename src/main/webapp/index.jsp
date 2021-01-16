@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<a href="limit/login">login</a>
+<a href="limit/login">login</a><br>
+<a href="user/success">success</a>
 </body>
 </html>

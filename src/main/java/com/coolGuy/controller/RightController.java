@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 权限控制器：
@@ -53,7 +54,16 @@ public class RightController {
 
     @RequestMapping("/toLogin")
     public String toLoginUser(@RequestParam("username") String username,
-                              @RequestParam("password") String password){
-        return userService.findByNameAndPwd(username,password);
+                              @RequestParam("password") String password,
+                              HttpServletRequest request){
+        String user = userService.findByNameAndPwd(username,password);
+        HttpSession session = request.getSession();
+        session.setAttribute("user",user);
+        return user;
+    }
+
+    @RequestMapping("/success")
+    public String success(){
+        return "success";
     }
 }
