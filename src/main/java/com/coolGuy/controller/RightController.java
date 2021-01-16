@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -41,7 +40,7 @@ public class RightController {
         user.setPhone(phone);
         if(password.equals(repassword)){
             userService.saveUser(user);
-            return "login";
+            return "/login.jsp";
         }else{
             return "register";
         }
@@ -49,7 +48,7 @@ public class RightController {
 
     @RequestMapping("/login")
     public String loginUser(){
-        return "login";
+        return "/login.jsp";
     }
 
     @RequestMapping("/toLogin")
@@ -59,11 +58,7 @@ public class RightController {
         String user = userService.findByNameAndPwd(username,password);
         HttpSession session = request.getSession();
         session.setAttribute("user",user);
-        return user;
-    }
-
-    @RequestMapping("/success")
-    public String success(){
         return "success";
     }
+
 }

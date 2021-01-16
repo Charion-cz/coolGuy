@@ -19,7 +19,7 @@ public class MyInterceptor implements HandlerInterceptor {
         if(session.getAttribute("user") != null){
             return true;
         }else{
-            response.sendRedirect(request.getContextPath()+"/limit/login");
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
             return false;
         }
 
