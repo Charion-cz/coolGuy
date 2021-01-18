@@ -9,17 +9,16 @@ import java.io.Serializable;
 
 /**
  * @Author Zhuang
- * @Data 2021/1/15 11:46
+ * @Data 2021/1/18 9:21
  */
 @Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class User implements Serializable {
-
+public class Goods implements Serializable {
     private int id;
-    private String username;
-    private String phone;
-    private String password;
-
+    private String name;
+    private int goodsId;
+    private int parentId;
+    private int templateId;
 }

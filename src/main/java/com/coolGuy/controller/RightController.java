@@ -58,7 +58,7 @@ public class RightController {
         String user = userService.findByNameAndPwd(username,password);
         HttpSession session = request.getSession();
         session.setAttribute("user",user);
-        return "success";
+        return "order/index";
     }
 
 }
