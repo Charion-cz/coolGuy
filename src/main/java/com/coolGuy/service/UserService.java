@@ -13,5 +13,5 @@ public interface UserService {
     void saveUser(User user);
 
     //登录
-    String findByNameAndPwd(String username,String password);
+    User findByNameAndPwd(String username,String password);
 }

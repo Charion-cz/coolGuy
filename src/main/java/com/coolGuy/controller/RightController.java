@@ -33,14 +33,16 @@ public class RightController {
     public String toRegisterUser(@RequestParam("username") String username,
                                  @RequestParam("phone") String phone,
                                  @RequestParam("password") String password,
-                                 @RequestParam("repassword") String repassword){
+                                 @RequestParam("repassword") String repassword,
+                                 HttpServletRequest request){
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         user.setPhone(phone);
         if(password.equals(repassword)){
             userService.saveUser(user);
-            return "/login.jsp";
+            request.setAttribute("loginMsg","注册成功，请登录");
+            return "forward:/login.jsp";
         }else{
             return "register";
         }
@@ -55,10 +57,16 @@ public class RightController {
     public String toLoginUser(@RequestParam("username") String username,
                               @RequestParam("password") String password,
                               HttpServletRequest request){
-        String user = userService.findByNameAndPwd(username,password);
-        HttpSession session = request.getSession();
-        session.setAttribute("user",user);
-        return "order/index";
+        User user = userService.findByNameAndPwd(username,password);
+        if(user != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("user",user);
+            session.setAttribute("username",username);
+            return "forward:/WEB-INF/pages/order/index.jsp";
+        }else{
+            request.setAttribute("loginMsg","账号或密码错误");
+            return "forward:/login.jsp";
+        }
     }
 
 }

@@ -8,7 +8,7 @@
         insert into tb_user values (null,#{username},#{phone},#{password})
     </insert>
     
-    <select id="findByNameAndPwd" resultType="user" >
+    <select id="findByNameAndPwd" resultType="user">
         select * from tb_user where username=#{param1} and password=#{param2}
     </select>
 </mapper>

@@ -28,8 +28,8 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">网上商城欢迎您！</li>
-						<li class="f-item">请<a href="limit/login" >登录</a>
-							<span><a href="limit/register">免费注册</a></span></li>
+						<li class="f-item">请<a href="login.jsp" >登录</a>
+							<span><a href="<%=path%>/limit/register">免费注册</a></span></li>
 					</ul>
 				</div>
 			</div>
@@ -50,7 +50,8 @@
 				</ul>
 				<div class="tab-content tab-wraped">
 					<div id="profile" class="tab-pane active">
-						<form class="sui-form" method="post" action="limit/toLogin">
+						<span type="color:red">${loginMsg}</span>
+						<form class="sui-form" method="post" action="<%=path%>/limit/toLogin">
 							<div class="input-prepend"></span>
 								<input id="inputName" type="text" placeholder="用户名" class="span2 input-xfat" name="username">
 							</div>

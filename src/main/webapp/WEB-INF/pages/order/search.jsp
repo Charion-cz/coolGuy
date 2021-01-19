@@ -1,74 +1,73 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>产品列表页</title>
-	 <link rel="icon" href="./img/favicon.ico">
-	
+	 <link rel="icon" href="<%=basePath%>/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="./css/all.css" />
-    <link rel="stylesheet" type="text/css" href="./css/pages-list.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/pages-list.css" />
 </head>
 
 <body>
 	<!-- 头部栏位 -->
 	<!--页面顶部-->
-<div id="nav-bottom">
-	<!--顶部-->
-	<div class="nav-top">
-		<div class="top">
-			<div class="py-container">
-				<div class="shortcut">
-					<ul class="fl">
-						<li class="f-item">网上商城欢迎您！</li>
-						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
-					</ul>
-					<div class="fr typelist">
-						<ul class="types">
-							<li class="f-item"><span>我的订单</span></li>
-							
-							<li class="f-item"><span><a href="cart.html" target="_blank">我的购物车</a></span></li>
-							<li class="f-item"><span><a href="home.html" target="_blank">我的网上商城</a></span></li>			
-							<li class="f-item"><span>网上商城会员</span></li>						
-							<li class="f-item"><span>企业采购</span></li>						
-							<li class="f-item"><span>关注网上商城</span></li>
-							<li class="f-item"><span><a href="cooperation.html" target="_blank">合作招商</a></span></li>
-							<li class="f-item"><span><a href="shoplogin.html" target="_blank">商家后台</a></span></li>				
-							<li class="f-item"><span>网站导航</li>
+	<div id="nav-bottom">
+		<!--顶部-->
+		<div class="nav-top">
+			<div class="top">
+				<div class="py-container">
+					<div class="shortcut">
+						<ul class="fl">
+							<li class="f-item"><span><a href="<%=path%>/order/toIndex">网上商城欢迎您!</a></span></li>
+							<li class="f-item">&nbsp;&nbsp;${username}</li>
 						</ul>
+						<div class="fr typelist">
+							<ul class="types">
+								<li class="f-item">
+									<span><a href="<%=path%>/order/myOrder">我的订单</a></span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/order/toCart">我的购物车</a>
+									</span>
+								</li>
+							</ul>
+						</div>
+
 					</div>
-					
 				</div>
 			</div>
-		</div>
 
-		<!--头部-->
-		<div class="header">
-			<div class="py-container">
-				<div class="yui3-g Logo">
-					<div class="yui3-u Left logoArea">
-						<a class="logo-bd" title="网上商城" href="index.html"></a>
-					</div>
-					<div class="yui3-u Rit searchArea">
-						<div class="search">
-							<form action="" class="sui-form form-inline">
-								<!--searchAutoComplete-->
-								<div class="input-append">
-									<input type="text" id="autocomplete"   class="input-error input-xxlarge" />
-									<button class="sui-btn btn-xlarge btn-danger" >搜索</button>
-								</div>
-							</form>
+			<!--头部-->
+			<div class="header">
+				<div class="py-container">
+					<div class="yui3-g Logo">
+						<div class="yui3-u Rit searchArea">
+							<div class="search">
+								<form action="<%=path%>/order/complete" class="sui-form form-inline" method="post">
+									<!--searchAutoComplete-->
+									<div class="input-append">
+										<input type="text" id="autocomplete" placeholder="请输入你要查找的商品" class="input-error input-xxlarge" name="complete"/>
+										<button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
+									</div>
+								</form>
+							</div>
 						</div>
-					</div>
-					
-				</div>
 
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 	<!-- 商品分类导航 -->
 	<div class="typeNav">
@@ -106,7 +105,7 @@
 					</li>					
 				</ul>
 				<ul class="fl sui-tag">
-					<li class="with-x">iphone</li>					
+					<li class="with-x">${complete}</li>
 				</ul>				
 			</div>
 				<div class="goods-list">
@@ -114,13 +113,29 @@
 					<ul class="yui3-g">						
 						<li class="yui3-u-1-5">
 							<div class="list-wrap">
-								
-								<!-- 表格在这里 -->
-								<table></table>
-								<div class="operate">
-									<a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-									<a href="javascript:void(0);" class="sui-btn btn-bordered">收藏</a>
-								</div>
+								<table border="1" width="1000">
+									<th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
+									<th>商品&nbsp;&nbsp;&nbsp;&nbsp;名称</th>
+									<th>商品&nbsp;&nbsp;&nbsp;&nbsp;数量</th>
+									<th>父类商品编号</th>
+									<th>类型编号</th>
+									<th>操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
+									<c:forEach items="${pageInfo.list}" var="p" varStatus="s">
+									<tr>
+										<td>${s.count}</td>
+										<td>${p.name}</td>
+										<td>${p.goodsNum}</td>
+										<td>${p.parentId}</td>
+										<td>${p.templateId}</td>
+										<td>
+											<div class="operate">
+											<a href="<%=basePath%>/" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+											<a href="" class="sui-btn btn-bordered">收藏</a>
+											</div>
+										</td>
+									</tr>
+									</c:forEach>
+								</table>
 							</div>
 						</li>
 					</ul>
@@ -129,20 +144,20 @@
 					<div class="sui-pagination pagination-large">
 						<ul>
 							<li class="prev disabled">
-								<a href="#">«上一页</a>
+								<a href="<%=path%>/search/complete?complete=${complete}&page=${page-1}">«上一页</a>
 							</li>
 							<li class="active">
-								<a href="#">1</a>
+								<a href="<%=path%>/search/complete?complete=${complete}&page=1">1</a>
 							</li>
 							<li>
-								<a href="#">2</a>
+								<a href="<%=path%>/search/complete?complete=${complete}&page=2">2</a>
 							</li>
 							<li class="dotted"><span></span></li>
 							<li class="next">
-								<a href="#">下一页»</a>
+								<a href="<%=path%>/search/complete?complete=${complete}&page=${page+1}">下一页»</a>
 							</li>
 						</ul>
-						<div><span>共10页&nbsp;</span></div>
+						<div><span>共${totalPage}页&nbsp;</span></div>
 					</div>
 				</div>
 			</div>
@@ -154,7 +169,7 @@
 						<li class="yui3-u-1-4">
 							<div class="list-wrap">
 								<div class="p-img">
-									<img src="./img/like_01.png" />
+									<img src="<%=basePath%>/img/like_01.png" />
 								</div>
 								<div class="attr">
 									<em>Apple苹果iPhone 6s (A1699)</em>
@@ -173,7 +188,7 @@
 						<li class="yui3-u-1-4">
 							<div class="list-wrap">
 								<div class="p-img">
-									<img src="./img/like_03.png" />
+									<img src="<%=basePath%>/img/like_03.png" />
 								</div>
 								<div class="attr">
 									<em>金属A面，360°翻转，APP下单省300！</em>
@@ -192,7 +207,7 @@
 						<li class="yui3-u-1-4">
 							<div class="list-wrap">
 								<div class="p-img">
-									<img src="./img/like_04.png" />
+									<img src="<%=basePath%>/img/like_04.png" />
 								</div>
 								<div class="attr">
 									<em>256SSD商务大咖，完爆职场，APP下单立减200</em>
@@ -211,7 +226,7 @@
 						<li class="yui3-u-1-4">
 							<div class="list-wrap">
 								<div class="p-img">
-									<img src="./img/like_02.png" />
+									<img src="<%=basePath%>/img/like_02.png" />
 								</div>
 								<div class="attr">
 									<em>Apple苹果iPhone 6s (A1699)</em>
@@ -341,7 +356,7 @@
 					</div>
 					<div class="yui3-u-1-6">
 						<h4>帮助中心</h4>
-						<img src="./img/wx_cz.jpg">
+						<img src="<%=basePath%>/img/wx_cz.jpg">
 					</div>
 				</div>
 			</div>
@@ -365,8 +380,6 @@
 	</div>
 </div>
 <!--页面底部END-->
-	
-	<!-- 基础js库 -->
 
 	<!--侧栏面板开始-->
 <div class="J-global-toolbar">
@@ -430,18 +443,6 @@
 					<div class="tbar-panel-main">
 						<div class="tbar-panel-content J-panel-content">
 							<div class="jt-history-wrap">
-								<ul>
-									<!--<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src="../../.../portal/img/like_03.png" height="100" width="100" /> </a>
-										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-										<a href="#" target="_blank" class="price">￥498.00</a>
-									</li>
-									<li class="jth-item">
-										<a href="#" class="img-wrap"> <img src="../../../portal/img/like_02.png" height="100" width="100" /></a>
-										<a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-										<a href="#" target="_blank" class="price">￥498.00</a>
-									</li>-->
-								</ul>
 								<a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
 							</div>
 						</div>
@@ -452,25 +453,6 @@
 			</div>
 
 			<div class="toolbar-header"></div>
-
-			<!-- 侧栏按钮 -->
-			<div class="toolbar-tabs J-tab">
-				<div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车" tag="cart" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count " id="tab-sub-cart-count">0</span>
-				</div>
-				<div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注" tag="follow" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count hide">0</span>
-				</div>
-				<div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹" tag="history" >
-					<i class="tab-ico"></i>
-					<em class="tab-text"></em>
-					<span class="tab-sub J-count hide">0</span>
-				</div>
-			</div>
 
 			<div class="toolbar-footer">
 				<div class="toolbar-tab tbar-tab-top" > <a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">顶部</em> </a> </div>
@@ -487,7 +469,7 @@
 </div>
 
 
-<script type="text/javascript" src="./js/all.js"></script>
+<script type="text/javascript" src="<%=basePath%>/js/all.js"></script>
 </body>
 
 </html>

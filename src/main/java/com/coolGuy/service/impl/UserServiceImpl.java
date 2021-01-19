@@ -23,11 +23,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String findByNameAndPwd(String username,String password) {
-        if(userDao.findByNameAndPwd(username,password) != null){
-            return "success";
-        }else {
-            return "login";
-        }
+    public User findByNameAndPwd(String username,String password) {
+
+        return userDao.findByNameAndPwd(username,password);
     }
 }

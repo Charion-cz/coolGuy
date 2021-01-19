@@ -18,7 +18,8 @@ import java.io.Serializable;
 public class Goods implements Serializable {
     private int id;
     private String name;
-    private int goodsId;
+    private int goodsNum;
     private int parentId;
     private int templateId;
+
 }

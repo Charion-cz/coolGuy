@@ -26,23 +26,19 @@
 				<div class="py-container">
 					<div class="shortcut">
 						<ul class="fl">
-							<li class="f-item">网上商城欢迎您！</li>
+							<li class="f-item"><span><a href="<%=path%>/order/toIndex">网上商城欢迎您!</a></span></li>
+							<li class="f-item">&nbsp;&nbsp;${username}</li>
 						</ul>
 						<div class="fr typelist">
 							<ul class="types">
 								<li class="f-item">
-									<span><a href="center-index.html">我的订单</a></span>
+									<span><a href="<%=path%>/order/myOrder">我的订单</a></span>
 								</li>
 								<li class="f-item">
 									<span>
-										<a href="cart.html">我的购物车</a>
+										<a href="<%=path%>/order/toCart">我的购物车</a>
 									</span>
 								</li>
-								<li class="f-item">
-									<span>
-										<a href="home.html">我的网上商城</a>
-									</span>
-								</li>																
 							</ul>
 						</div>
 
@@ -56,10 +52,10 @@
 					<div class="yui3-g Logo">						
 						<div class="yui3-u Rit searchArea">
 							<div class="search">
-								<form action="order/complete" class="sui-form form-inline" method="post">
+								<form action="<%=path%>/search/complete" class="sui-form form-inline" method="post">
 									<!--searchAutoComplete-->
 									<div class="input-append">
-										<input type="text" id="autocomplete" class="input-error input-xxlarge" name="complete"/>
+										<input type="text" id="autocomplete" placeholder="请输入你要查找的商品" class="input-error input-xxlarge" name="complete"/>
 										<button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
 									</div>
 								</form>
@@ -2856,8 +2852,6 @@
 			</li>
 		</ul>
 	</div>
-	<!-- 基础js库 -->
-	<!-- 购物车 -->
 	<!--侧栏面板开始-->
 	<div class="J-global-toolbar">
 		<div class="toolbar-wrap J-wrap">
@@ -2945,25 +2939,6 @@
 				</div>
 
 				<div class="toolbar-header"></div>
-
-				<!-- 侧栏按钮 -->
-				<div class="toolbar-tabs J-tab">
-					<div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车" tag="cart">
-						<i class="tab-ico"></i>
-						<em class="tab-text"></em>
-						<span class="tab-sub J-count " id="tab-sub-cart-count">0</span>
-					</div>
-					<div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注" tag="follow">
-						<i class="tab-ico"></i>
-						<em class="tab-text"></em>
-						<span class="tab-sub J-count hide">0</span>
-					</div>
-					<div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹" tag="history">
-						<i class="tab-ico"></i>
-						<em class="tab-text"></em>
-						<span class="tab-sub J-count hide">0</span>
-					</div>
-				</div>
 
 				<div class="toolbar-footer">
 					<div class="toolbar-tab tbar-tab-top">

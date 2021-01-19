@@ -37,7 +37,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <!--  要拦截的具体方法 -->
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/order/**"/>
             <!-- 不要拦截的方法 -->
             <mvc:exclude-mapping path="/limit/*"/>
             <!-- 配置拦截器对象 -->

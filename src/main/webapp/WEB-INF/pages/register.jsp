@@ -16,8 +16,8 @@
 	<link rel="icon" href="<%=basePath%>/img/favicon.ico">
 
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/all.css" />
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/pages-register.css" />
+    <link rel="stylesheet" type="text/css" href="<%=path%>/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="<%=path%>/css/pages-register.css" />
 </head>
 
 <body>
@@ -30,8 +30,8 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">网上商城欢迎您！</li>
-						<li class="f-item">请<a href="limit/login">登录</a>　
-							<span><a href="limit/register">免费注册</a></span></li>
+						<li class="f-item">请<a href="login.jsp">登录</a>　
+							<span><a href="<%=path%>/limit/register">免费注册</a></span></li>
 					</ul>
 				</div>
 			</div>
@@ -44,9 +44,9 @@
 
 	<!--register-->
 	<div class="registerArea">
-		<h3>注册新用户<span class="go">我有账号，去<a href="limit/login">登陆</a></span></h3>
+		<h3>注册新用户<span class="go">我有账号，去<a href="login.jsp">登陆</a></span></h3>
 		<div class="info">
-			<form class="sui-form form-horizontal" action="limit/toRegister" method="post">
+			<form class="sui-form form-horizontal" action="<%=path%>/limit/toRegister" method="post">
 				<div class="control-group">
 					<label class="control-label">用户名：</label>
 					<div class="controls">
