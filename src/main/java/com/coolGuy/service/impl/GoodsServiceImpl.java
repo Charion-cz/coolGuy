@@ -24,7 +24,6 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsDao.findByName(name);
     }
 
-
     @Override
     public Goods findById(int id) {
         return goodsDao.findById(id);

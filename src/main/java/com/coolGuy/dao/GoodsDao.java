@@ -15,4 +15,6 @@ public interface GoodsDao {
     List<Goods> findByName(String name);
 
     int countTotal(String name);
+
+    int saveGoods(Goods goods);
 }

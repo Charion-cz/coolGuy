@@ -1,6 +1,8 @@
 package service;
 
+import com.coolGuy.pojo.CartGoods;
 import com.coolGuy.pojo.Goods;
+import com.coolGuy.service.CartGoodsService;
 import com.coolGuy.service.GoodsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -9,8 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,6 +26,8 @@ public class TestIndexController {
 
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private CartGoodsService cartGoodsService;
 
     @Test
     public void testFindById(){
@@ -49,5 +53,24 @@ public class TestIndexController {
         String name = "手机";
         int total = goodsService.countTotal(name);
         System.out.println(total);
+    }
+
+    @Test
+    public void TestFindAll(){
+        List<CartGoods> list = cartGoodsService.findAll();
+        for (CartGoods cartGoods:list){
+            System.out.println(cartGoods);
+        }
+    }
+
+    @Test
+    public void TestFindByIds(){
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(1);
+        List<CartGoods> lists = cartGoodsService.findAllByIds(list);
+        for(CartGoods cartGoods:lists){
+            System.out.println(cartGoods);
+        }
     }
 }

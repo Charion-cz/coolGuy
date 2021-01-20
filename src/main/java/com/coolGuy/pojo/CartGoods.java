@@ -8,19 +8,19 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * 商品总表
+ * 购物车
  * @Author Zhuang
- * @Data 2021/1/18 9:21
+ * @Data 2021/1/19 19:44
  */
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Goods implements Serializable {
+public class CartGoods implements Serializable {
+
     private int id;
+    private int uid;
     private String name;
-    private int goodsNum;
     private int parentId;
     private int templateId;
-
 }

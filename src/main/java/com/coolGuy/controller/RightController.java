@@ -60,6 +60,7 @@ public class RightController {
         User user = userService.findByNameAndPwd(username,password);
         if(user != null){
             HttpSession session = request.getSession();
+            session.setAttribute("userId",user.getId());
             session.setAttribute("user",user);
             session.setAttribute("username",username);
             return "forward:/WEB-INF/pages/order/index.jsp";

@@ -8,6 +8,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
+ * 用户信息表
  * @Author Zhuang
  * @Data 2021/1/15 11:46
  */

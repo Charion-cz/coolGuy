@@ -27,7 +27,7 @@
                 <div class="py-container">
                     <div class="shortcut">
                         <ul class="fl">
-                            <li class="f-item"><span><a href="<%=path%>/order/toIndex">网上商城欢迎您!</a></span></li>
+                            <li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
                             <li class="f-item">&nbsp;&nbsp;${username}</li>
                         </ul>
                         <div class="fr typelist">

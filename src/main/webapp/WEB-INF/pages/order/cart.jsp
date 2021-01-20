@@ -16,6 +16,45 @@
 
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/all.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/pages-cart.css" />
+
+	<script>
+		window.onload = function(){
+			//给删除选中按钮添加单击事件
+			document.getElementById("delSelected").onclick = function(){
+				if(confirm("您确定要结算选中条目吗？")){
+
+					var flag = false;
+					//判断是否有选中条目
+					var cbs = document.getElementsByName("uid");
+					for (var i = 0; i < cbs.length; i++) {
+						if(cbs[i].checked){
+							//有一个条目选中了
+							flag = true;
+							break;
+						}
+					}
+
+					if(flag){//有条目被选中
+						//表单提交
+						document.getElementById("form").submit();
+					}
+
+				}
+
+			}
+			//1.获取第一个cb
+			document.getElementById("firstCb").onclick = function(){
+				//2.获取下边列表中所有的cb
+				var cbs = document.getElementsByName("uid");
+				//3.遍历
+				for (var i = 0; i < cbs.length; i++) {
+					//4.设置这些cbs[i]的checked状态 = firstCb.checked
+					cbs[i].checked = this.checked;
+
+				}
+			}
+		}
+	</script>
 </head>
 
 <body>
@@ -28,7 +67,7 @@
 				<div class="py-container">
 					<div class="shortcut">
 						<ul class="fl">
-							<li class="f-item"><span><a href="<%=path%>/order/toIndex">网上商城欢迎您!</a></span></li>
+							<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
 							<li class="f-item">&nbsp;&nbsp;${username}</li>
 						</ul>
 						<div class="fr typelist">
@@ -76,51 +115,39 @@
 		<div class="allgoods">
 			<h4>全部商品<span></span></h4>
 			<div class="cart-main">
-				<div class="yui3-g cart-th">
-					<div class="yui3-u-1-4"><input class="chooseAll" type="checkbox" name="" id="" value="" /> 全部</div>
-					<div class="yui3-u-1-4">商品</div>
-					<div class="yui3-u-1-8">单价（元）</div>
-					<div class="yui3-u-1-8">数量</div>
-					<div class="yui3-u-1-8">小计（元）</div>
-					<div class="yui3-u-1-8">操作</div>
-				</div>
 				<div class="cart-item-list">
 					<div class="cart-body">
 						<div class="cart-list">
-							<ul class="goods-list yui3-g">
-								<li class="yui3-u-6-24">
-									<div class="good-item">
-										<div class="item-img"><img src="<%=basePath%>/img/goods.png" /></div>
-										<div class="item-msg">Apple Macbook Air 13.3英寸笔记本电脑 银色（Corei5）处理器/8GB内存</div>
-									</div>
-								</li>
-								<li class="yui3-u-5-24">
-									<div class="item-txt">颜色MzcBook爱人 银色（Corei5）处理器/8GB内存 尺寸：13.3英寸</div>
-								</li>
-								<li class="yui3-u-1-8"><span class="price">8848.00</span></li>
-								<li class="yui3-u-1-8">
-									<a href="javascript:void(0)" class="increment mins">-</a>
-									<input autocomplete="off" type="text" value="1" minnum="1" class="itxt" />
-									<a href="javascript:void(0)" class="increment plus">+</a>
-								</li>
-								<li class="yui3-u-1-8"><span class="sum">8848.00</span></li>
-								<li class="yui3-u-1-8">
-									<a href="#none">删除</a><br />								
-								</li>
-							</ul>
+							<form action="<%=path%>/order/delSelectOrd" method="post" id="form">
+							<table border="1" width="1000">
+								<th><input type="checkbox" id="firstCb"></th>
+								<th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
+								<th>商品名称</th>
+								<th>父类商品编号</th>
+								<th>类型编号</th>
+								<th>操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
+								<c:forEach items="${cartGoods}" var="user" varStatus="s">
+									<tr>
+										<td><input type="checkbox" name="uid" value="${user.id}"></td>
+										<td>${s.count}</td>
+										<td>${user.name}</td>
+										<td>${user.parentId}</td>
+										<td>${user.templateId}</td>
+										<td>
+											<div class="operate">
+												<a href="<%=path%>/order/deleteOrder/${user.id}" class="sui-btn btn-bordered">删除</a>
+											</div>
+										</td>
+									</tr>
+								</c:forEach>
+								<tr><td colspan="9" align="right">
+									<div class="cart-tool">
+									<a class="sum-btn" href="javascript:void(0);" id="delSelected">结算</a>
+								</div>
+								</td></tr>
+							</table>
+							</form>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="cart-tool">
-				<div class="select-all">
-					<input class="chooseAll" type="checkbox"  name="" id="" value="" />
-					<span>全选</span>
-				</div>				
-				<div class="money-box">
-					<div class="chosed">已选择<span>0</span>件商品</div>					
-					<div class="sumbtn">
-						<a class="sum-btn" href="getOrderInfo.html">结算</a>
 					</div>
 				</div>
 			</div>
