@@ -84,7 +84,7 @@
 						</dl>
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="center-collect.html">我的收藏</a></dd>
+							<dd><a href="<%=path%>/collect/toCenterCollect">我的收藏</a></dd>
 						</dl>
 						<dl>
 							<dd><a href="center-setting-info.html">个人信息</a></dd>
@@ -95,99 +95,28 @@
                 <!--右侧主内容-->
                 <div class="yui3-u-5-6 goods">
                     <div class="body">                   
-                            <h4>收藏的商品</h4>
+						<h4>收藏的商品</h4>
                             <div class="goods-list">
                                 <!-- 表格 -->
+								<table border="1" width="1000">
+									<th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
+									<th>商品&nbsp;&nbsp;&nbsp;&nbsp;名称</th>
+									<th>父类商品编号</th>
+									<th>类型编号</th>
+									<th>操作</th>
+									<c:forEach items="${list}" var="p" varStatus="s">
+										<tr>
+											<td>${s.count}</td>
+											<td>${p.name}</td>
+											<td>${p.parentId}</td>
+											<td>${p.templateId}</td>
+											<td>
+												<a href="<%=path%>/collect/delCollect/${p.id}/${userId}" class="sui-btn btn-bordered">删除</a>
+											</td>
+										</tr>
+									</c:forEach>
+								</table>
                             </div>
-                      
-                        
-                        <!--猜你喜欢-->
-                        <div class="like-title">
-                            <div class="mt">
-                                <span class="fl"><strong>猜你喜欢</strong></span>
-                            </div>
-                        </div>
-                        <div class="like-list">
-                            <ul class="yui3-g">
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="./img/_/itemlike01.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>3699.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有6人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="./img/_/itemlike02.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4388.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="./img/_/itemlike03.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="yui3-u-1-4">
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="./img/_/itemlike04.png" />
-                                        </div>
-                                        <div class="attr">
-                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-											<em>¥</em>
-											<i>4088.00</i>
-										</strong>
-                                        </div>
-                                        <div class="commit">
-                                            <i class="command">已有700人评价</i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

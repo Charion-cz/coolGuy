@@ -84,7 +84,7 @@
 						</dl>
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="center-collect.html">我的收藏</a></dd>
+							<dd><a href="<%=path%>/collect/toCenterCollect">我的收藏</a></dd>
 						</dl>
 						<dl>
 							<dd><a href="center-setting-info.html">个人信息</a></dd>

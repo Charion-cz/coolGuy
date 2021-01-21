@@ -129,8 +129,8 @@
 										<td>${p.templateId}</td>
 										<td>
 											<div class="operate">
-											<a href="<%=basePath%>/order/toCollect/${p.id}/${userId}" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-											<a href="" class="sui-btn btn-bordered">收藏</a>
+											<a href="<%=path%>/order/toCollect/${p.id}/${userId}" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+											<a href="<%=path%>/collect/centerCollect/${p.id}/${userId}" class="sui-btn btn-bordered">收藏</a>
 											</div>
 										</td>
 									</tr>
