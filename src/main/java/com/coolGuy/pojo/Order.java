@@ -23,4 +23,5 @@ public class Order implements Serializable {
     private String name;
     private int parentId;
     private int templateId;
+
 }

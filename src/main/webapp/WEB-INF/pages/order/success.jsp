@@ -48,8 +48,6 @@
 		<!--头部-->
 		<div class="header">
 			<div class="py-container">
-				<div class="yui3-g Logo">
-					<div class="yui3-u Rit searchArea">
 						<div class="search">
 							<form action="<%=path%>/search/complete" class="sui-form form-inline" method="post">
 								<!--searchAutoComplete-->
@@ -59,9 +57,6 @@
 								</div>
 							</form>
 						</div>
-					</div>
-
-				</div>
 			</div>
 		</div>
 	</div>

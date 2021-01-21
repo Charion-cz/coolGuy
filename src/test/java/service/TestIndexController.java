@@ -2,8 +2,10 @@ package service;
 
 import com.coolGuy.pojo.CartGoods;
 import com.coolGuy.pojo.Goods;
+import com.coolGuy.pojo.Order;
 import com.coolGuy.service.CartGoodsService;
 import com.coolGuy.service.GoodsService;
+import com.coolGuy.service.OrderService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.junit.Test;
@@ -13,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -28,6 +31,8 @@ public class TestIndexController {
     private GoodsService goodsService;
     @Autowired
     private CartGoodsService cartGoodsService;
+    @Autowired
+    private OrderService orderService;
 
     @Test
     public void testFindById(){
@@ -72,5 +77,30 @@ public class TestIndexController {
         for(CartGoods cartGoods:lists){
             System.out.println(cartGoods);
         }
+    }
+
+    @Test
+    public void TestSaveOrder(){
+        List<Order> list = new ArrayList<>();
+        Order order1 = new Order();
+        order1.setUid(1);
+        order1.setName("aaa");
+        order1.setParentId(11);
+        order1.setTemplateId(11);
+        Order order2 = new Order();
+        order2.setUid(1);
+        order2.setName("bbb");
+        order2.setParentId(22);
+        order2.setTemplateId(22);
+        Order order3 = new Order();
+        order3.setUid(2);
+        order3.setName("ccc");
+        order3.setParentId(33);
+        order3.setTemplateId(33);
+        list.add(order1);
+        list.add(order2);
+        list.add(order3);
+        orderService.SaveOrder(list);
+
     }
 }

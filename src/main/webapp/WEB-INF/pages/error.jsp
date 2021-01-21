@@ -32,7 +32,12 @@
      <tbody>
        <tr>
          <td class="c">The requested URL was not found on this server.</td>
+       </tr>
+       <tr>
          <td class="c">${errorMsg}</td>
+       </tr>
+       <tr>
+           <td class="c">我们要高呼：理解万岁！！！</td>
        </tr>
      </tbody>
    </table>

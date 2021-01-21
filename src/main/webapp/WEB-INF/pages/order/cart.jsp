@@ -140,7 +140,7 @@
 										</td>
 									</tr>
 								</c:forEach>
-								<tr><td colspan="9" align="right">
+								<tr><td colspan="6" align="right">
 									<div class="cart-tool">
 									<a class="sum-btn" href="javascript:void(0);" id="delSelected">结算</a>
 								</div>
