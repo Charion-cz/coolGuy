@@ -11,7 +11,7 @@
  Target Server Version : 50731
  File Encoding         : 65001
 
- Date: 18/01/2021 09:06:58
+ Date: 22/01/2021 15:09:47
 */
 
 SET NAMES utf8mb4;
@@ -24,23 +24,20 @@ DROP TABLE IF EXISTS `tb_address`;
 CREATE TABLE `tb_address`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '详细地址',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `area` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '别名',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `uid`(`uid`) USING BTREE,
   CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `tb_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 71 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_address
 -- ----------------------------
-INSERT INTO `tb_address` VALUES (1, 1, '金燕龙办公楼', '满庭春');
-INSERT INTO `tb_address` VALUES (2, 2, '修正大厦', '爱乐城');
-INSERT INTO `tb_address` VALUES (3, 2, '中腾大厦', '金华小区');
-INSERT INTO `tb_address` VALUES (4, 3, '西直门', '德创智谷');
-INSERT INTO `tb_address` VALUES (5, 3, '永春武馆', '家里');
-INSERT INTO `tb_address` VALUES (6, 4, '咏春武馆总部', '师爷家');
-INSERT INTO `tb_address` VALUES (7, 4, '北京市昌平区', '北京家');
+INSERT INTO `tb_address` VALUES (68, 4, 'tch1', ' 湖北武汉', '12138', ' 学校');
+INSERT INTO `tb_address` VALUES (70, 4, 'tch1', '湖北仙桃', '12138', '家里');
 
 -- ----------------------------
 -- Table structure for tb_cart
@@ -50,13 +47,12 @@ CREATE TABLE `tb_cart`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NULL DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `goods_num` int(11) NULL DEFAULT NULL,
   `parent_id` int(11) NULL DEFAULT NULL,
   `template_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `uid3`(`uid`) USING BTREE,
   CONSTRAINT `uid3` FOREIGN KEY (`uid`) REFERENCES `tb_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tb_category
@@ -1284,34 +1280,18 @@ CREATE TABLE `tb_order_will`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NULL DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `goods_num` int(11) NULL DEFAULT NULL,
   `parent_id` int(11) NULL DEFAULT NULL,
   `template_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `uid2`(`uid`) USING BTREE,
   CONSTRAINT `uid2` FOREIGN KEY (`uid`) REFERENCES `tb_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_order_will
 -- ----------------------------
-INSERT INTO `tb_order_will` VALUES (1, 1, '图书、音像、电子书刊', 100, 0, 42);
-INSERT INTO `tb_order_will` VALUES (2, 1, '电子书刊', 100, 1, 42);
-INSERT INTO `tb_order_will` VALUES (3, 1, '电子书', 100, 2, 42);
-INSERT INTO `tb_order_will` VALUES (4, 1, '网络原创', 100, 2, 42);
-INSERT INTO `tb_order_will` VALUES (5, 2, '数字杂志', 100, 2, 42);
-INSERT INTO `tb_order_will` VALUES (6, 2, '多媒体图书', 100, 2, 42);
-INSERT INTO `tb_order_will` VALUES (7, 2, '音像', 100, 1, 42);
-INSERT INTO `tb_order_will` VALUES (8, 3, '音乐', 100, 7, 42);
-INSERT INTO `tb_order_will` VALUES (9, 2, '影视', 100, 7, 42);
-INSERT INTO `tb_order_will` VALUES (10, 1, '教育音像', 100, 7, 42);
-INSERT INTO `tb_order_will` VALUES (11, 3, '英文原版', 100, 1, 42);
-INSERT INTO `tb_order_will` VALUES (12, 3, '商务投资', 100, 11, 42);
-INSERT INTO `tb_order_will` VALUES (13, 1, '英语学习与考试', 100, 11, 42);
-INSERT INTO `tb_order_will` VALUES (14, 4, '传记', 100, 11, 42);
-INSERT INTO `tb_order_will` VALUES (15, 4, '文艺', 100, 1, 42);
-INSERT INTO `tb_order_will` VALUES (16, 3, '小说', 100, 18, 42);
-INSERT INTO `tb_order_will` VALUES (17, 4, '文学', 100, 18, 42);
+INSERT INTO `tb_order_will` VALUES (19, 4, '手机', 0, 42);
+INSERT INTO `tb_order_will` VALUES (20, 4, '电子书', 2, 42);
 
 -- ----------------------------
 -- Table structure for tb_topay
@@ -1321,11 +1301,12 @@ CREATE TABLE `tb_topay`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NULL DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `goods_num` int(11) NULL DEFAULT NULL,
   `parent_id` int(11) NULL DEFAULT NULL,
   `template_id` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `uid4`(`uid`) USING BTREE,
+  CONSTRAINT `uid4` FOREIGN KEY (`uid`) REFERENCES `tb_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tb_user
@@ -1337,7 +1318,7 @@ CREATE TABLE `tb_user`  (
   `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_user
@@ -1345,6 +1326,7 @@ CREATE TABLE `tb_user`  (
 INSERT INTO `tb_user` VALUES (1, '张三', '13904211939', '123123');
 INSERT INTO `tb_user` VALUES (2, '李四', '17701265258', '112212');
 INSERT INTO `tb_user` VALUES (3, '孙悟空', '1112221111', '147875');
-INSERT INTO `tb_user` VALUES (4, 'tch1', '17771589062', '12138');
+INSERT INTO `tb_user` VALUES (4, 'tch1', '17725411789', '12138');
+INSERT INTO `tb_user` VALUES (10, 'tch3', '17771589062', '456789');
 
 SET FOREIGN_KEY_CHECKS = 1;

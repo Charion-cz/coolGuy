@@ -3,9 +3,11 @@ package service;
 import com.coolGuy.pojo.CartGoods;
 import com.coolGuy.pojo.Goods;
 import com.coolGuy.pojo.Order;
+import com.coolGuy.pojo.User;
 import com.coolGuy.service.CartGoodsService;
 import com.coolGuy.service.GoodsService;
 import com.coolGuy.service.OrderService;
+import com.coolGuy.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.junit.Test;
@@ -27,6 +29,8 @@ import java.util.List;
 @ContextConfiguration(locations= {"classpath:applicationContext.xml"})
 public class TestIndexController {
 
+    @Autowired
+    private UserService userService;
     @Autowired
     private GoodsService goodsService;
     @Autowired
@@ -101,6 +105,17 @@ public class TestIndexController {
         list.add(order2);
         list.add(order3);
         orderService.SaveOrder(list);
+    }
 
+    @Test
+    public void testUpUser(){
+        int id=10;
+        String username = "tch3";
+        String password = "456789";
+        User user = new User();
+        user.setId(id);
+        user.setUsername(username);
+        user.setPassword(password);
+        userService.updateUser(user);
     }
 }

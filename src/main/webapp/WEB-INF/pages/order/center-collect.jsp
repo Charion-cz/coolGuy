@@ -87,8 +87,8 @@
 							<dd><a href="<%=path%>/collect/toCenterCollect">我的收藏</a></dd>
 						</dl>
 						<dl>
-							<dd><a href="center-setting-info.html">个人信息</a></dd>
-							<dd><a href="center-setting-address.html"  >地址管理</a></dd>
+							<dd><a href="<%=path%>/info/toSettingInfo">个人信息</a></dd>
+							<dd><a href="<%=path%>/info/toSettingAddress">地址管理</a></dd>
 						</dl>
 					</div>
 				</div>

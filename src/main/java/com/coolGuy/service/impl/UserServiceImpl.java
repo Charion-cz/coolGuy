@@ -27,4 +27,14 @@ public class UserServiceImpl implements UserService {
 
         return userDao.findByNameAndPwd(username,password);
     }
+
+    @Override
+    public User findById(int id) {
+        return userDao.findById(id);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+    }
 }

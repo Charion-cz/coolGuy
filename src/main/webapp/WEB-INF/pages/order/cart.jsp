@@ -93,7 +93,7 @@
 					<div class="yui3-g Logo">
 						<div class="yui3-u Rit searchArea">
 							<div class="search">
-								<form action="<%=path%>/order/complete" class="sui-form form-inline" method="post">
+								<form action="<%=path%>/search/complete" class="sui-form form-inline" method="post">
 									<!--searchAutoComplete-->
 									<div class="input-append">
 										<input type="text" id="autocomplete" placeholder="请输入你要查找的商品" class="input-error input-xxlarge" name="complete"/>
@@ -108,7 +108,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 	
 	<div class="cart py-container">
 		<!--All goods-->

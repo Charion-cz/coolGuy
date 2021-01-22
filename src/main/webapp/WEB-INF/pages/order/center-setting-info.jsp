@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!DOCTYPE html>
 <html>
@@ -10,75 +10,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>我的订单</title>
-    <link rel="icon" href="<%=basePath%>/img/favicon.ico">
+    <title>设置-个人信息</title>
+     <link rel="icon" href="<%=basePath%>/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/all.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/pages-seckillOrder.css" />
-
 </head>
 
 <body>
     <!-- 头部栏位 -->
     <!--页面顶部-->
-    <div id="nav-bottom">
-        <!--顶部-->
-        <div class="nav-top">
-            <div class="top">
-                <div class="py-container">
-                    <div class="shortcut">
-                        <ul class="fl">
-                            <li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
-                            <li class="f-item">&nbsp;&nbsp;${username}</li>
-                        </ul>
-                        <div class="fr typelist">
-                            <ul class="types">
-                                <li class="f-item">
-                                    <span><a href="<%=path%>/order/myOrder">我的订单</a></span>
-                                </li>
-                                <li class="f-item">
+	<div id="nav-bottom">
+		<!--顶部-->
+		<div class="top">
+			<div class="py-container">
+				<div class="shortcut">
+					<ul class="fl">
+						<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
+						<li class="f-item">&nbsp;&nbsp;${username}</li>
+					</ul>
+					<div class="fr typelist">
+						<ul class="types">
+							<li class="f-item">
+								<span><a href="<%=path%>/order/myOrder">我的订单</a></span>
+							</li>
+							<li class="f-item">
 									<span>
 										<a href="<%=path%>/order/toCart">我的购物车</a>
 									</span>
-                                </li>
-                            </ul>
-                        </div>
+							</li>
+						</ul>
+					</div>
 
-                    </div>
-                </div>
-            </div>
+				</div>
+			</div>
+		</div>
 
-            <!--头部-->
-            <div class="header">
-                <div class="py-container">
-                    <div class="yui3-g Logo">
-                        <div class="yui3-u Rit searchArea">
-                            <div class="search">
-                                <form action="<%=path%>/search/complete" class="sui-form form-inline" method="post">
-                                    <!--searchAutoComplete-->
-                                    <div class="input-append">
-                                        <input type="text" id="autocomplete" placeholder="请输入你要查找的商品" class="input-error input-xxlarge" name="complete"/>
-                                        <button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+		<!--头部-->
+		<div class="header">
+			<div class="py-container">
+				<div class="yui3-g Logo">
+					<div class="yui3-u Rit searchArea">
+						<div class="search">
+							<form action="<%=path%>/search/complete" class="sui-form form-inline" method="post">
+								<!--searchAutoComplete-->
+								<div class="input-append">
+									<input type="text" id="autocomplete" placeholder="请输入你要查找的商品" class="input-error input-xxlarge" name="complete"/>
+									<button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
+								</div>
+							</form>
+						</div>
+					</div>
 
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <!--header-->
     <div id="account">
         <div class="py-container">
             <div class="yui3-g home">
                 <!--左侧列表-->
-                <div class="yui3-u-1-6 list">
-                    <div class="list-items">
-                        <dl>
+				<div class="yui3-u-1-6 list">
+					<div class="list-items">
+						<dl>
 							<dt><i>·</i> 订单中心</dt>
 							<dd ><a href="<%=path%>/order/myOrder">我的订单</a></dd>
 						</dl>
@@ -90,35 +86,58 @@
 							<dd><a href="<%=path%>/info/toSettingInfo">个人信息</a></dd>
 							<dd><a href="<%=path%>/info/toSettingAddress">地址管理</a></dd>
 						</dl>
-                    </div>
-                </div>
+					</div>
+				</div>
                 <!--右侧主内容-->
-                <div class="yui3-u-5-6 order-pay">
-                    <div class="body">
-                        <div class="order-detail">
-                            <div class="orders">
-                                <table border="1" width="1000">
-                                    <th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
-                                    <th>商品名称</th>
-                                    <th>父类商品编号</th>
-									<th>类型编号</th>
-									<th>操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
-                                    <c:forEach items="${order}" var="user" varStatus="s">
-                                        <tr>
-                                            <td>${s.count}</td>
-                                            <td>${user.name}</td>
-											<td>${user.parentId}</td>
-											<td>${user.templateId}</td>
-											<td>
-												<div class="operate">
-													<a href="<%=path%>/order/delTheOrder/${user.id}" class="sui-btn btn-bordered">确认收货</a>
-												</div>
-											</td>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
+                <div class="yui3-u-5-6">
+                    <div class="body userInfo">
+                        <ul class="sui-nav nav-tabs nav-large nav-primary ">
+                            <li class="active"><a href="#one" data-toggle="tab">基本资料</a></li>                         
+                        </ul>
+                        <div class="tab-content ">
+                            <div id="one" class="tab-pane active">
+                                <form id="form-msg" class="sui-form form-horizontal" action="<%=path%>/info/toUpUser">
+                                    <div class="control-group">
+                                        <label for="username" class="control-label">昵称：</label>
+                                        <div class="controls">
+                                            <input type="text" id="username" name="username" placeholder="${user.username}">
+                                        </div>
+                                    </div>
+									<div class="control-group">
+                                        <label for="phone" class="control-label">手机号：</label>
+                                        <div class="controls">
+                                            <input type="text" id="phone" name="phone" placeholder="${user.phone}">
+                                        </div>
+                                    </div>
+									<div class="control-group">
+										<label for="password" class="control-label">原密码：</label>
+										<div class="controls">
+											<input type="password" id="password" name="password" placeholder="******">
+										</div>
+									</div>
+									<div class="control-group">
+                                        <label for="newPassword" class="control-label">新密码：</label>
+                                        <div class="controls">
+                                            <input type="password" id="newPassword" name="newPassword" placeholder="******">
+                                        </div>
+                                    </div>
+									<div class="control-group">
+                                        <label for="rePassword" class="control-label">确认密码：</label>
+                                        <div class="controls">
+                                            <input type="password" id="rePassword" name="rePassword" placeholder="******">
+                                        </div>
+                                    </div>                                
+                                    <div class="control-group">
+										<label for="sanwei" class="control-label"></label>
+                                        <div class="controls">
+                                            <input type="submit" id="sanwei" class="sui-btn btn-primary"></button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                          
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -233,7 +252,7 @@
 					</div>
 					<div class="yui3-u-1-6">
 						<h4>帮助中心</h4>
-						<img src="./img/wx_cz.jpg">
+						<img src="<%=basePath%>>/img/wx_cz.jpg">
 					</div>
 				</div>
 			</div>
@@ -250,15 +269,13 @@
 					<li>友情链接<span class="space"></span></li>
 					<li>关于我们</li>
 				</ul>
-				<p>地址： 邮编：100096 电话： 传真：</p>
-				<p>京ICP备084656521号京公网安备110108343532</p>
+				<p>地址： 邮编： 电话： 传真：</p>
+				<p>京ICP备084564641号京公网安备1105645642</p>
 			</div>
 		</div>
 	</div>
 </div>
 <!--页面底部END-->
-    
-
 
 </body>
 

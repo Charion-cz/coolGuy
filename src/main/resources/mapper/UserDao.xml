@@ -7,8 +7,28 @@
     <insert id="saveUser" parameterType="user">
         insert into tb_user values (null,#{username},#{phone},#{password})
     </insert>
-    
+
     <select id="findByNameAndPwd" resultType="user">
         select * from tb_user where username=#{param1} and password=#{param2}
     </select>
+
+    <select id="findById" resultType="user">
+        select * from tb_user where id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="user">
+        update tb_user
+        <set>
+            <if test="username != null and username != ''">
+                username=#{username},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone=#{phone},
+            </if>
+            <if test="password != null and password != ''">
+                password=#{password}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

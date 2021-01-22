@@ -14,4 +14,8 @@ public interface UserService {
 
     //登录
     User findByNameAndPwd(String username,String password);
+
+    User findById(int id);
+
+    void updateUser(User user);
 }
