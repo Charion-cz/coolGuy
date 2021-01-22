@@ -37,9 +37,9 @@
 								<span><a href="<%=path%>/order/myOrder">我的订单</a></span>
 							</li>
 							<li class="f-item">
-									<span>
-										<a href="<%=path%>/order/toCart">我的购物车</a>
-									</span>
+								<span>
+									<a href="<%=path%>/order/toCart">我的购物车</a>
+								</span>
 							</li>
 						</ul>
 					</div>

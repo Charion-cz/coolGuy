@@ -38,6 +38,9 @@
         <mvc:interceptor>
             <!--  要拦截的具体方法 -->
             <mvc:mapping path="/order/**"/>
+            <mvc:mapping path="/collect/**"/>
+            <mvc:mapping path="/search/**"/>
+            <mvc:mapping path="/info/**"/>
             <!-- 不要拦截的方法 -->
             <mvc:exclude-mapping path="/limit/*"/>
             <!-- 配置拦截器对象 -->
