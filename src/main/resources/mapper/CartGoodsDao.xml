@@ -8,16 +8,15 @@
         <id column="id" property="id"/>
         <result column="uid" property="uid"/>
         <result column="name" property="name"/>
-        <result column="parent_id" property="parentId"/>
-        <result column="template_id" property="templateId"/>
+        <result column="image" property="image"/>
     </resultMap>
 
     <insert id="saveGoods" parameterType="cartGoods">
-        insert into tb_cart values (null,#{uid},#{name},#{parentId},#{templateId})
+        insert into tb_cart values (null,#{uid},#{name},#{image})
     </insert>
 
     <select id="findAll" resultMap="cartGoodsMap">
-        select * from tb_cart
+        select * from tb_cart where uid=#{param1}
     </select>
 
     <delete id="delById" parameterType="int">
@@ -29,6 +28,9 @@
         <foreach collection="list" item="id" index="index" open="(" separator="," close=")">
             #{id}
         </foreach>
+    </select>
+    <select id="findById" resultMap="cartGoodsMap">
+        select * from tb_cart where id = #{param1}
     </select>
 
 </mapper>

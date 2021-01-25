@@ -36,6 +36,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    //进入我的中心
     @RequestMapping("/myOrder")
     public ModelAndView toOrder(HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -47,8 +48,9 @@ public class OrderController {
         return mv;
     }
 
+    //添加到购物车
     @RequestMapping("/toCollect/{id}/{userId}")
-    public ModelAndView toCollect(@PathVariable("id") int id,
+    public ModelAndView toCollect(@PathVariable("id") String id,
                                   @PathVariable("userId") int userId){
         ModelAndView mv = new ModelAndView();
         //通过id查出仓库的商品
@@ -57,20 +59,22 @@ public class OrderController {
         CartGoods cartGoods = new CartGoods();
         cartGoods.setUid(userId);
         cartGoods.setName(goods.getName());
-        cartGoods.setParentId(goods.getParentId());
-        cartGoods.setTemplateId(goods.getTemplateId());
+        cartGoods.setImage(goods.getImage());
         cartGoodsService.saveGoods(cartGoods);
         //同时将商品展示在页面
+        mv.addObject("goodsImage",goods.getImage());
         mv.addObject("goodsName",goods.getName());
         mv.setViewName("order/success-cart");
         return mv;
     }
 
+    //进入购物车
     @RequestMapping("/toCart")
-    public ModelAndView toIndex(){
+    public ModelAndView toIndex(HttpServletRequest request){
+        int uid = (int) request.getSession().getAttribute("userId");
         ModelAndView mv = new ModelAndView();
         //查出用户购物车中所有的商品，发送到前台
-        List<CartGoods> list = cartGoodsService.findAll();
+        List<CartGoods> list = cartGoodsService.findAll(uid);
         mv.addObject("cartGoods",list);
         mv.setViewName("order/cart");
         return mv;
@@ -82,12 +86,13 @@ public class OrderController {
         int id = Integer.parseInt(userId);
         cartGoodsService.delById(id);
         //查出用户购物车中所有的商品，发送到前台
-        List<CartGoods> list = cartGoodsService.findAll();
+        List<CartGoods> list = cartGoodsService.findAll(id);
         mv.addObject("cartGoods",list);
         mv.setViewName("order/cart");
         return mv;
     }
 
+    //订单页的结算
     @RequestMapping("/delSelectOrd")
     public ModelAndView delSelectOrd(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
@@ -102,8 +107,7 @@ public class OrderController {
             Order order = new Order();
             order.setUid(cartGoods.getUid());
             order.setName(cartGoods.getName());
-            order.setParentId(cartGoods.getParentId());
-            order.setTemplateId(cartGoods.getTemplateId());
+            order.setImage(cartGoods.getImage());
             orderList.add(order);
         }
         orderService.SaveOrder(orderList);
@@ -113,6 +117,7 @@ public class OrderController {
         return mv;
     }
 
+    //
     @RequestMapping("/delTheOrder/{userId}")
     public ModelAndView delTheOrder(@PathVariable("userId") String userId,HttpServletRequest request){
         HttpSession session = request.getSession();

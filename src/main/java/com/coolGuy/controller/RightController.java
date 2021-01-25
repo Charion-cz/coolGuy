@@ -70,4 +70,11 @@ public class RightController {
         }
     }
 
+    @RequestMapping("/loginOut")
+    public String loginOut(HttpServletRequest request){
+        request.getSession().invalidate();
+        request.setAttribute("loginMsg","请重新登录");
+        return "forward:/login.jsp";
+    }
+
 }

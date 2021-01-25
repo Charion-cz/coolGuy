@@ -12,11 +12,13 @@ public interface CartGoodsService {
 
     void saveGoods(CartGoods cartGoods);
 
-    List<CartGoods> findAll();
+    List<CartGoods> findAll(int uid);
 
     void delById(int id);
 
     void delSelect(String[] ids);
 
     List<CartGoods> findAllByIds(List<Integer> ids);
+
+    CartGoods findById(int id);
 }

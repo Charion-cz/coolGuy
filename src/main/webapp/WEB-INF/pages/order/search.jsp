@@ -28,6 +28,7 @@
 						<ul class="fl">
 							<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
 							<li class="f-item">&nbsp;&nbsp;${username}</li>
+							<li class="f-item"><span><a href="<%=path%>/limit/loginOut">退出</a></span></li>
 						</ul>
 						<div class="fr typelist">
 							<ul class="types">
@@ -37,6 +38,21 @@
 								<li class="f-item">
 									<span>
 										<a href="<%=path%>/order/toCart">我的购物车</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/collect/toCenterCollect">我的收藏</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingInfo">个人信息</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingAddress">地址管理</a>
 									</span>
 								</li>
 							</ul>
@@ -105,45 +121,42 @@
 					</li>					
 				</ul>
 				<ul class="fl sui-tag">
-					<li class="with-x">${complete}</li>
+					<li class="with-x">${complete} --></li>
+					<c:forEach items="${brand}" var="brand">
+						<li class="with-x">${brand}</li>
+					</c:forEach>
 				</ul>				
 			</div>
-				<div class="goods-list">
-				<!-- 就是这里 -->
-					<ul class="yui3-g">						
-						<li class="yui3-u-1-5">
-							<div class="list-wrap">
-								<table border="1" width="1000">
-									<th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
-									<th>商品&nbsp;&nbsp;&nbsp;&nbsp;名称</th>
-									<th>商品&nbsp;&nbsp;&nbsp;&nbsp;数量</th>
-									<th>父类商品编号</th>
-									<th>类型编号</th>
-									<th>操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
-									<c:forEach items="${pageInfo.list}" var="p" varStatus="s">
-									<tr>
-										<td>${s.count}</td>
-										<td>${p.name}</td>
-										<td>${p.goodsNum}</td>
-										<td>${p.parentId}</td>
-										<td>${p.templateId}</td>
-										<td>
-											<div class="operate">
-											<a href="<%=path%>/order/toCollect/${p.id}/${userId}" class="sui-btn btn-bordered btn-danger">加入购物车</a>
-											<a href="<%=path%>/collect/centerCollect/${p.id}/${userId}" class="sui-btn btn-bordered">收藏</a>
-											</div>
-										</td>
-									</tr>
-									</c:forEach>
-								</table>
+			<div class="goods-list">
+				<ul class="yui3-g">
+					<c:forEach items="${pageInfo.list}" var="p" varStatus="s">
+					<li class="yui3-u-1-5">
+						<div class="list-wrap">
+							<div class="p-img">
+								<img src="${p.image}"/>
 							</div>
-						</li>
-					</ul>
-				</div>
+							<div class="price">
+								<strong>
+									<em>¥</em>
+									<i>8888.00</i>
+								</strong>
+							</div>
+							<div class="attr">
+								${p.name}
+							</div>
+							<div class="operate">
+								<a href="<%=path%>/order/toCollect/${p.id}/${userId}" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+								<a href="<%=path%>/collect/centerCollect/${p.id}/${userId}" class="sui-btn btn-bordered">收藏</a>
+							</div>
+						</div>
+					</li>
+					</c:forEach>
+				</ul>
+			</div>
 				<div class="fr page">
 					<div class="sui-pagination pagination-large">
 						<ul>
-							<li class="prev disabled">
+							<li class="next">
 								<a href="<%=path%>/search/complete?complete=${complete}&page=${page-1}">«上一页</a>
 							</li>
 							<li class="active">
@@ -152,7 +165,13 @@
 							<li>
 								<a href="<%=path%>/search/complete?complete=${complete}&page=2">2</a>
 							</li>
-							<li class="dotted"><span></span></li>
+							<li>
+								<a href="<%=path%>/search/complete?complete=${complete}&page=3">3</a>
+							</li>
+							<li>
+								<a href="<%=path%>/search/complete?complete=${complete}&page=4">4</a>
+							</li>
+							<li class="dotted"><span>....</span></li>
 							<li class="next">
 								<a href="<%=path%>/search/complete?complete=${complete}&page=${page+1}">下一页»</a>
 							</li>

@@ -17,10 +17,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Goods implements Serializable {
-    private int id;
+    private String id;
     private String name;
-    private int goodsNum;
-    private int parentId;
-    private int templateId;
+    private String image;
+    private String categoryName;
+    private String brandName;
 
 }

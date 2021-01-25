@@ -21,6 +21,5 @@ public class CartGoods implements Serializable {
     private int id;
     private int uid;
     private String name;
-    private int parentId;
-    private int templateId;
+    private String image;
 }

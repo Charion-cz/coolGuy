@@ -32,4 +32,9 @@ public class CollectServiceImpl implements CollectService {
     public void delectOne(int id) {
         collectDao.delectOne(id);
     }
+
+    @Override
+    public Collect findById(int id) {
+        return collectDao.findById(id);
+    }
 }

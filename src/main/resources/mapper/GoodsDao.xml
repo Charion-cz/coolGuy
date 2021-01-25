@@ -6,29 +6,25 @@
     <resultMap id="goodsMap" type="goods">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
-        <result column="goods_num" property="goodsNum"/>
-        <result column="parent_id" property="parentId"/>
-        <result column="template_id" property="templateId"/>
+        <result column="image" property="image"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="brand_name" property="brandName"/>
     </resultMap>
 
-    <resultMap id="cartGoodsMap" type="cartGoods">
-        <id column="id" property="id"/>
-        <result column="uid" property="uid"/>
-        <result column="name" property="name"/>
-        <result column="parent_id" property="parentId"/>
-        <result column="template_id" property="templateId"/>
-    </resultMap>
-
-    <select id="findById" parameterType="int" resultMap="goodsMap">
-        select * from tb_category where id = #{id}
+    <select id="findById" parameterType="string" resultMap="goodsMap">
+        select * from tb_sku where id = #{id}
     </select>
 
     <select id="findByName" resultMap="goodsMap" parameterType="string">
-        select * from tb_category where name like #{name}
+        select * from tb_sku where category_name like #{categoryName}
     </select>
 
     <select id="countTotal" resultType="int" parameterType="string">
-        select count(*) from tb_category where name like #{name}
+        select count(*) from tb_sku where category_name like #{categoryName}
+    </select>
+
+    <select id="findBrand" parameterType="string" resultType="string">
+        select DISTINCT brand_name from tb_sku where category_name like #{categoryName}
     </select>
 
 </mapper>

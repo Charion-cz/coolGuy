@@ -24,29 +24,45 @@
     <div id="nav-bottom">
         <!--顶部-->
         <div class="nav-top">
-            <div class="top">
-                <div class="py-container">
-                    <div class="shortcut">
-                        <ul class="fl">
-                            <li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
-                            <li class="f-item">&nbsp;&nbsp;${username}</li>
-                        </ul>
-                        <div class="fr typelist">
-                            <ul class="types">
-                                <li class="f-item">
-                                    <span><a href="<%=path%>/order/myOrder">我的订单</a></span>
-                                </li>
-                                <li class="f-item">
+			<div class="top">
+				<div class="py-container">
+					<div class="shortcut">
+						<ul class="fl">
+							<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
+							<li class="f-item">&nbsp;&nbsp;${username}</li>
+							<li class="f-item"><span><a href="<%=path%>/limit/loginOut">退出</a></span></li>
+						</ul>
+						<div class="fr typelist">
+							<ul class="types">
+								<li class="f-item">
+									<span><a href="<%=path%>/order/myOrder">我的订单</a></span>
+								</li>
+								<li class="f-item">
 									<span>
 										<a href="<%=path%>/order/toCart">我的购物车</a>
 									</span>
-                                </li>
-                            </ul>
-                        </div>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/collect/toCenterCollect">我的收藏</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingInfo">个人信息</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingAddress">地址管理</a>
+									</span>
+								</li>
+							</ul>
+						</div>
 
-                    </div>
-                </div>
-            </div>
+					</div>
+				</div>
+			</div>
 
             <!--头部-->
             <div class="header">
@@ -80,15 +96,6 @@
                     <div class="list-items">
                         <dl>
 							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="<%=path%>/order/myOrder">我的订单</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="<%=path%>/collect/toCenterCollect">我的收藏</a></dd>
-						</dl>
-						<dl>
-							<dd><a href="<%=path%>/info/toSettingInfo">个人信息</a></dd>
-							<dd><a href="<%=path%>/info/toSettingAddress">地址管理</a></dd>
 						</dl>
                     </div>
                 </div>
@@ -97,26 +104,24 @@
                     <div class="body">
                         <div class="order-detail">
                             <div class="orders">
-                                <table border="1" width="1000">
-                                    <th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
-                                    <th>商品名称</th>
-                                    <th>父类商品编号</th>
-									<th>类型编号</th>
-									<th>操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
-                                    <c:forEach items="${order}" var="user" varStatus="s">
-                                        <tr>
-                                            <td>${s.count}</td>
-                                            <td>${user.name}</td>
-											<td>${user.parentId}</td>
-											<td>${user.templateId}</td>
-											<td>
-												<div class="operate">
-													<a href="<%=path%>/order/delTheOrder/${user.id}" class="sui-btn btn-bordered">确认收货</a>
+								<c:forEach items="${order}" var="user" varStatus="s">
+									<table class="sui-table table-bordered order-datatable">
+										<tbody>
+										<tr>
+											<td width="35%">
+												<div class="typographic"><img src="${user.image}" style="width: 82px;height: 82px;"/>
+													${user.name}
 												</div>
 											</td>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
+											<td width="10%" class="center">
+												<ul class="unstyled">
+													<a href="<%=path%>/order/delTheOrder/${user.id}" class="sui-btn btn-bordered">确认收货</a>
+												</ul>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</c:forEach>
                             </div>
                         </div>
                     </div>

@@ -30,6 +30,7 @@
 					<ul class="fl">
 						<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
 						<li class="f-item">&nbsp;&nbsp;${username}</li>
+						<li class="f-item"><span><a href="<%=path%>/limit/loginOut">退出</a></span></li>
 					</ul>
 					<div class="fr typelist">
 						<ul class="types">
@@ -37,9 +38,24 @@
 								<span><a href="<%=path%>/order/myOrder">我的订单</a></span>
 							</li>
 							<li class="f-item">
-								<span>
-									<a href="<%=path%>/order/toCart">我的购物车</a>
-								</span>
+									<span>
+										<a href="<%=path%>/order/toCart">我的购物车</a>
+									</span>
+							</li>
+							<li class="f-item">
+									<span>
+										<a href="<%=path%>/collect/toCenterCollect">我的收藏</a>
+									</span>
+							</li>
+							<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingInfo">个人信息</a>
+									</span>
+							</li>
+							<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingAddress">地址管理</a>
+									</span>
 							</li>
 						</ul>
 					</div>
@@ -78,15 +94,6 @@
 					<div class="list-items">
 						<dl>
 							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="<%=path%>/order/myOrder">我的订单</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="<%=path%>/collect/toCenterCollect">我的收藏</a></dd>
-						</dl>
-						<dl>
-							<dd><a href="<%=path%>/info/toSettingInfo">个人信息</a></dd>
-							<dd><a href="<%=path%>/info/toSettingAddress">地址管理</a></dd>
 						</dl>
 					</div>
 				</div>

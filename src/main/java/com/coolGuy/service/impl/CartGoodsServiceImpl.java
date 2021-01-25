@@ -26,9 +26,9 @@ public class CartGoodsServiceImpl implements CartGoodsService {
     }
 
     @Override
-    public List<CartGoods> findAll() {
+    public List<CartGoods> findAll(int uid) {
 
-        return cartGoodsDao.findAll();
+        return cartGoodsDao.findAll(uid);
     }
 
     @Override
@@ -48,5 +48,10 @@ public class CartGoodsServiceImpl implements CartGoodsService {
     @Override
     public List<CartGoods> findAllByIds(List<Integer> ids) {
         return cartGoodsDao.findAllByIds(ids);
+    }
+
+    @Override
+    public CartGoods findById(int id) {
+        return cartGoodsDao.findById(id);
     }
 }

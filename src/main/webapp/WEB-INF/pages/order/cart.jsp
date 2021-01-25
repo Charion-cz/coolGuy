@@ -69,6 +69,7 @@
 						<ul class="fl">
 							<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
 							<li class="f-item">&nbsp;&nbsp;${username}</li>
+							<li class="f-item"><span><a href="<%=path%>/limit/loginOut">退出</a></span></li>
 						</ul>
 						<div class="fr typelist">
 							<ul class="types">
@@ -78,6 +79,21 @@
 								<li class="f-item">
 									<span>
 										<a href="<%=path%>/order/toCart">我的购物车</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/collect/toCenterCollect">我的收藏</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingInfo">个人信息</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingAddress">地址管理</a>
 									</span>
 								</li>
 							</ul>
@@ -114,43 +130,49 @@
 		<!--All goods-->
 		<div class="allgoods">
 			<h4>全部商品<span></span></h4>
-			<div class="cart-main">
-				<div class="cart-item-list">
-					<div class="cart-body">
-						<div class="cart-list">
-							<form action="<%=path%>/order/delSelectOrd" method="post" id="form">
-							<table border="1" width="1000">
-								<th><input type="checkbox" id="firstCb"></th>
-								<th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
-								<th>商品名称</th>
-								<th>父类商品编号</th>
-								<th>类型编号</th>
-								<th>操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
-								<c:forEach items="${cartGoods}" var="user" varStatus="s">
-									<tr>
-										<td><input type="checkbox" name="uid" value="${user.id}"></td>
-										<td>${s.count}</td>
-										<td>${user.name}</td>
-										<td>${user.parentId}</td>
-										<td>${user.templateId}</td>
-										<td>
-											<div class="operate">
-												<a href="<%=path%>/order/deleteOrder/${user.id}" class="sui-btn btn-bordered">删除</a>
+			<form action="<%=path%>/order/delSelectOrd" method="post" id="form">
+				<div class="cart-main">
+					<div class="yui3-g cart-th">
+						<div class="yui3-u-1-4"><input  type="checkbox" id="firstCb"/></div>
+						<div class="yui3-u-1-4">商品</div>
+						<div class="yui3-u-1-8">单价（元）</div>
+						<div class="yui3-u-1-8">操作</div>
+					</div>
+					<div class="cart-item-list">
+						<div class="cart-body">
+							<c:forEach items="${cartGoods}" var="goods">
+								<div class="cart-list">
+									<ul class="goods-list yui3-g">
+										<li class="yui3-u-1-24">
+											<input type="checkbox" name="uid" value="${goods.id}">
+										</li>
+										<li class="yui3-u-6-24">
+											<div class="good-item">
+												<div class="item-img"><img src="${goods.image}" /></div>
+												<div class="item-msg" style="padding-left: 200px;width: 200px;">${goods.name}</div>
 											</div>
-										</td>
-									</tr>
-								</c:forEach>
-								<tr><td colspan="6" align="right">
-									<div class="cart-tool">
-									<a class="sum-btn" href="javascript:void(0);" id="delSelected">结算</a>
+										</li>
+										<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+										<li class="yui3-u-1-8"><span class="sum" style="padding-left: 250px;">8848.00</span></li>
+										<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+										<li class="yui3-u-1-8" style="padding-left: 240px;">
+											<a href="<%=path%>/order/deleteOrder/${goods.id}" class="sui-btn btn-bordered">删除</a><br />
+											<a href="<%=path%>/collect/mvToCollect/${goods.id}/${userId}">移到收藏</a>
+										</li>
+									</ul>
 								</div>
-								</td></tr>
-							</table>
-							</form>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
-			</div>
+				<div class="cart-tool">
+					<div class="money-box">
+						<div class="sumbtn">
+							<a class="sum-btn" href="javascript:void(0);" id="delSelected">结算</a>
+						</div>
+					</div>
+				</div>
+			</form>
 			<div class="clearfix"></div>
 			<div class="liked">
 				<ul class="sui-nav nav-tabs">

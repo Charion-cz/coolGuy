@@ -14,7 +14,7 @@ public interface CartGoodsDao {
     int saveGoods(CartGoods cartGoods);
 
     //查找购物车信息
-    List<CartGoods> findAll();
+    List<CartGoods> findAll(int uid);
 
     //单个删除
     int delById(Integer id);
@@ -22,4 +22,5 @@ public interface CartGoodsDao {
     //根据ids查找商品
     List<CartGoods> findAllByIds(List<Integer> ids);
 
+    CartGoods findById(int id);
 }

@@ -15,4 +15,6 @@ public interface CollectService {
     List<Collect> findAll(int uid);
 
     void delectOne(int id);
+
+    Collect findById(int id);
 }

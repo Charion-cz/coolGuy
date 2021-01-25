@@ -30,6 +30,7 @@
 						<ul class="fl">
 							<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
 							<li class="f-item">&nbsp;&nbsp;${username}</li>
+							<li class="f-item"><span><a href="<%=path%>/limit/loginOut">退出</a></span></li>
 						</ul>
 						<div class="fr typelist">
 							<ul class="types">
@@ -41,12 +42,28 @@
 										<a href="<%=path%>/order/toCart">我的购物车</a>
 									</span>
 								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/collect/toCenterCollect">我的收藏</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingInfo">个人信息</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingAddress">地址管理</a>
+									</span>
+								</li>
 							</ul>
 						</div>
 
 					</div>
 				</div>
 			</div>
+		</div>
 
 			<!--头部-->
 			<div class="header">
@@ -79,16 +96,7 @@
 				<div class="yui3-u-1-6 list">
 					<div class="list-items">
 						<dl>
-							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="<%=path%>/order/myOrder">我的订单</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="<%=path%>/collect/toCenterCollect">我的收藏</a></dd>
-						</dl>
-						<dl>
-							<dd><a href="<%=path%>/info/toSettingInfo">个人信息</a></dd>
-							<dd><a href="<%=path%>/info/toSettingAddress">地址管理</a></dd>
+							<dt><i>·</i> 收藏中心</dt>
 						</dl>
 					</div>
 				</div>
@@ -98,24 +106,24 @@
 						<h4>收藏的商品</h4>
                             <div class="goods-list">
                                 <!-- 表格 -->
-								<table border="1" width="1000">
-									<th>序&nbsp;&nbsp;&nbsp;&nbsp;号</th>
-									<th>商品&nbsp;&nbsp;&nbsp;&nbsp;名称</th>
-									<th>父类商品编号</th>
-									<th>类型编号</th>
-									<th>操作</th>
+								<ul class="yui3-g"  id="goods-list">
 									<c:forEach items="${list}" var="p" varStatus="s">
-										<tr>
-											<td>${s.count}</td>
-											<td>${p.name}</td>
-											<td>${p.parentId}</td>
-											<td>${p.templateId}</td>
-											<td>
-												<a href="<%=path%>/collect/delCollect/${p.id}/${userId}" class="sui-btn btn-bordered">删除</a>
-											</td>
-										</tr>
+										<li class="yui3-u-1-4">
+											<div class="list-wrap">
+												<div class="p-img"><img src="${p.image}" ></div>
+												<div class="price"><strong><em>¥</em> <i>8848.00</i></strong></div>
+												<div class="attr"><em>${p.name}</em></div>
+												<div class="operate">
+													<a href="<%=path%>/collect/mvToCart/${p.id}/${userId}"class="sui-btn btn-bordered btn-danger">加入购物车</a>
+												</div>
+												<div class="operate">
+													<a href="<%=path%>/collect/delCollect/${p.id}/${userId}" class="sui-btn btn-bordered">删除</a>
+												</div>
+
+											</div>
+										</li >
 									</c:forEach>
-								</table>
+								</ul>
                             </div>
                     </div>
                 </div>

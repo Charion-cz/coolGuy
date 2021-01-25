@@ -19,20 +19,26 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsDao goodsDao;
 
     @Override
-    public List<Goods> findByName(String name) {
-        name = "%" + name +"%";
-        return goodsDao.findByName(name);
+    public List<Goods> findByName(String categoryName) {
+        categoryName = "%" + categoryName + "%";
+        return goodsDao.findByName(categoryName);
     }
 
     @Override
-    public Goods findById(int id) {
+    public Goods findById(String id) {
         return goodsDao.findById(id);
     }
 
     @Override
-    public int countTotal(String name) {
-        name = "%" + name +"%";
-        return goodsDao.countTotal(name);
+    public int countTotal(String categoryName) {
+        categoryName = "%" + categoryName + "%";
+        return goodsDao.countTotal(categoryName);
+    }
+
+    @Override
+    public List<String> findBrand(String categoryName) {
+        categoryName = "%" + categoryName + "%";
+        return goodsDao.findBrand(categoryName);
     }
 
 }

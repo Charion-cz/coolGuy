@@ -8,12 +8,11 @@
         <id column="id" property="id"/>
         <result column="uid" property="uid"/>
         <result column="name" property="name"/>
-        <result column="parent_id" property="parentId"/>
-        <result column="template_id" property="templateId"/>
+        <result column="image" property="image"/>
     </resultMap>
 
     <insert id="saveCollect" parameterType="collect">
-        insert into tb_order_will values (null,#{uid},#{name},#{parentId},#{templateId})
+        insert into tb_order_will values (null,#{uid},#{name},#{image})
     </insert>
 
     <select id="findAll" resultMap="collectMap" parameterType="int">
@@ -23,4 +22,8 @@
     <delete id="delectOne" parameterType="int">
         delete from tb_order_will where id=#{id}
     </delete>
+
+    <select id="findById" resultMap="collectMap">
+        select * from tb_order_will where id=#{param1}
+    </select>
 </mapper>

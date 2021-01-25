@@ -8,12 +8,11 @@
         <id column="id" property="id"/>
         <result column="uid" property="uid"/>
         <result column="name" property="name"/>
-        <result column="parent_id" property="parentId"/>
-        <result column="template_id" property="templateId"/>
+        <result column="image" property="image"/>
     </resultMap>
 
     <insert id="SaveOrder" parameterType="order">
-        insert into tb_topay  values (null,#{uid},#{name},#{parentId},#{templateId})
+        insert into tb_topay  values (null,#{uid},#{name},#{image})
     </insert>
 
     <select id="findAll" resultMap="orderMap" parameterType="int">

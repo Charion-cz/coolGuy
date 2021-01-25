@@ -10,11 +10,14 @@ import java.util.List;
  */
 public interface GoodsDao {
 
-    Goods findById(int id);
+    Goods findById(String id);
 
-    List<Goods> findByName(String name);
+    //分页查找
+    List<Goods> findByName(String categoryName);
 
-    int countTotal(String name);
+    //查找总记录数
+    int countTotal(String categoryName);
 
-    int saveGoods(Goods goods);
+    //查找二级分类
+    List<String> findBrand(String categoryName);
 }

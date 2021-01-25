@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface GoodsService {
 
-    List<Goods> findByName(String name);
+    List<Goods> findByName(String categoryName);
 
-    Goods findById(int id);
+    Goods findById(String id);
 
-    int countTotal(String name);
+    int countTotal(String categoryName);
+
+    List<String> findBrand(String categoryName);
 }

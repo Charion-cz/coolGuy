@@ -28,6 +28,7 @@
 						<ul class="fl">
 							<li class="f-item"><span><a href="<%=path%>/search/toIndex">网上商城欢迎您!</a></span></li>
 							<li class="f-item">&nbsp;&nbsp;${username}</li>
+							<li class="f-item"><span><a href="<%=path%>/limit/loginOut">退出</a></span></li>
 						</ul>
 						<div class="fr typelist">
 							<ul class="types">
@@ -37,6 +38,21 @@
 								<li class="f-item">
 									<span>
 										<a href="<%=path%>/order/toCart">我的购物车</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/collect/toCenterCollect">我的收藏</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingInfo">个人信息</a>
+									</span>
+								</li>
+								<li class="f-item">
+									<span>
+										<a href="<%=path%>/info/toSettingAddress">地址管理</a>
 									</span>
 								</li>
 							</ul>
@@ -61,9 +77,7 @@
 								</form>
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -72,26 +86,23 @@
     <div class="success-cart">
         <div class="py-container ">
             <h3><i class="sui-icon icon-pc-right"></i>商品已成功加入购物车！</h3>
-            <div class="goods">
-                <div class="left-good">                   
-                    <div class="right-info">
-                        <p class="title">
-						<h3><i class="sui-icon icon-pc-right"></i>您选择的商品是：${goodsName}</h3>
-						</p>
-                    </div>
-                </div>
-                <div class="right-gocart">                  
-                    <a href="<%=path%>/order/toCart" class="sui-btn btn-xlarge btn-danger ">去购物车结算 > </a>
-                </div>
-            </div>
-            </div>
+			<div class="goods">
+				<div class="left-good">
+					<div class="left-pic"><img src="${goodsImage}"></div>
+					<div class="right-info">
+						<p class="title">${goodsName}</p>
+					</div>
+				</div>
+				<div class="right-gocart">
+					<a href="<%=path%>/order/toCart" class="sui-btn btn-xlarge btn-danger ">去购物车结算</a>
+				</div>
+			</div>
+        </div>
     </div>
  
      <div class="other-item py-container ">
           <h4>买什么</h4>
            <div class="buy-goods">
-              
-
               <ul class="yui3-g">
                   <li  class="yui3-u-1-4">
                       <div class="buy-list">
